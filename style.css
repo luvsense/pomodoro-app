@@ -1,20 +1,28 @@
+* {
+  font-family: "Lexend Deca", sans-serif;
+  font-weight: 200;
+}
+
 body {
-    font-family: sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeebe2;
+  color: #080909;
 }
 
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+  margin-top: 150px;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 #timer {
-    font-size: 3em;
-    margin-bottom: 20px;
+  font-size: 3em;
+  margin-bottom: 20px;
 }
