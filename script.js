@@ -1,26 +1,54 @@
-let workTime = 25 * 60; // 25 minutes in seconds  
-let breakTime = 5 * 60;  // 5 minutes in seconds
-let secondsRemaining = workTime; 
-let isRunning = false; 
-let timerInterval = null; 
-let isBreakTime = false; 
 
-const timerDisplay = document.getElementById('timer');
-const startButton = document.getElementById('start');
-// Add references to other buttons too...
+const timerDisplay = document.getElementById("pomodoro-timer-display");
+const startBtn = document.querySelector(".start-button");
+const pauseBtn = document.querySelector(".pause-button");
+const resetBtn = document.querySelector(".reset-button");
 
-function displayTime() {
-   // Code to convert 'secondsRemaining' into minutes and seconds and update 'timerDisplay'
+
+let isTimerRunning = false;
+let timerDuration = 1500; // 25 minutes in seconds
+let timerId = null;
+
+
+function updateTimerDisplay(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const remainderSeconds = seconds % 60;
+  timerDisplay.textContent = `${minutes}:${
+    remainderSeconds < 10 ? "0" : ""
+  }${remainderSeconds}`;
 }
 
-function startTimer() { 
-    if (isRunning) return; // Don't start another timer if one is already running 
-   
-    isRunning = true;
-    timerInterval = setInterval(() => {
-        secondsRemaining--; 
-        displayTime();  
-    }, 1000); // Update every second
-} 
+// Start timer function
+function startTimer() {
+  if (!isTimerRunning) {
+    isTimerRunning = true;
+    timerId = setInterval(() => {
+      timerDuration -= 1;
+      updateTimerDisplay(timerDuration);
+      if (timerDuration <= 0) {
+        clearInterval(timerId);
+        alert("Time is up!");
+        resetTimer();
+      
+    }, 1000);
+  }
+}
 
-// Add functions for pause, reset (and switching between work/break timers later)
+// Pause timer function
+function pauseTimer() {
+  clearInterval(timerId);
+  isTimerRunning = false;
+}
+
+// Reset timer function
+function resetTimer() {
+  clearInterval(timerId);
+  timerDuration = 1500; // Reset to 25 minutes
+  isTimerRunning = false;
+  updateTimerDisplay(timerDuration);
+}
+
+
+startBtn.addEventListener("click", startTimer);
+pauseBtn.addEventListener("click", pauseTimer);
+resetBtn.addEventListener("click", resetTimer);

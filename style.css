@@ -1,28 +1,115 @@
-* {
-  font-family: "Lexend Deca", sans-serif;
-  font-weight: 200;
+:root {
+  --background-color: #f0f0f0;
+  --text-color: #333;
+  --button-color: #ff6347;
+  --button-text-color: white;
 }
 
 body {
-  font-size: 16px;
-  line-height: 40px;
-  letter-spacing: normal;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #eeebe2;
-  color: #080909;
+  height: 100vh;
+  margin: 0;
 }
 
-.container {
-  margin-top: 150px;
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 5px;
+header,
+footer {
   text-align: center;
 }
 
-#timer {
-  font-size: 3em;
-  margin-bottom: 20px;
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.pomodoro-container time.timer-display {
+  font-size: 4rem;
+  text-align: center;
+  color: #f0f0f0;
+  margin-top: 20px;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 35px;
+}
+
+.timer-button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.timer-button:hover {
+  opacity: 0.9;
+}
+
+footer p,
+header p {
+  margin: 10px 0;
+}
+
+footer a {
+  color: var(--button-color);
+  text-decoration: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.pomodoro-container {
+  background: #fff;
+  box-shadow: 0 6px 26px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5vh auto;
+  width: 90%;
+  max-width: 600px;
+}
+
+.timer-card {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.timer-button:hover {
+  opacity: 0.9;
+}
+
+.timer-button:active {
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+}
+
+.timer-button:focus:not(:active) {
+  animation: bouncy 0.4s ease;
 }
