@@ -1,4 +1,3 @@
-
 const timerDisplay = document.getElementById("pomodoro-timer-display");
 const startBtn = document.querySelector(".start-button");
 const pauseBtn = document.querySelector(".pause-button");
@@ -29,7 +28,7 @@ function startTimer() {
         clearInterval(timerId);
         alert("Time is up!");
         resetTimer();
-      
+      }
     }, 1000);
   }
 }
